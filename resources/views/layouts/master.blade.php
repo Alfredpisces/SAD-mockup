@@ -42,7 +42,7 @@
         @include('partials.sidebar')
 
         <!-- Main Content -->
-        <div class="main-content app-content">
+        <div class="main-content app-content content">
             <div class="container-fluid">
                 @yield('content')
             </div>

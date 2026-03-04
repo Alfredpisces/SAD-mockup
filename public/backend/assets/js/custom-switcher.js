@@ -74,6 +74,8 @@ function switcherClick() {
     loaderEnable = document.querySelector('#switcher-loader-enable');
     loaderDisable = document.querySelector('#switcher-loader-disable');
 
+    if (!lightBtn) { return; }
+
    // primary theme
   let primaryColor1Var = primaryDefaultColor1Btn.addEventListener(
     "click",
@@ -865,6 +867,8 @@ function ResetAllFn() {
 }
 
 function checkOptions() {
+
+    if (!document.querySelector('#switcher-dark-theme')) { return; }
 
     // dark
     if (localStorage.getItem('valexdarktheme')) {
