@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\UserController;
 
 // 1. Redirect the Welcome page to the Transaction Index if logged in
 Route::get('/', function () {
@@ -18,6 +19,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Your Transaction routes
     Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions.index');
     Route::post('/transactions/generate', [TransactionController::class, 'generate'])->name('transactions.generate');
+
+    // User Management Routes
+    Route::resource('users', UserController::class);
 
     // Profile Routes
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
