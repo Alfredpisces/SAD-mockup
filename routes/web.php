@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
 
 // 1. Redirect the Welcome page to the Transaction Index if logged in
 Route::get('/', function () {
@@ -23,6 +26,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    // User Management Routes
+    Route::resource('users', UserController::class);
+    Route::resource('roles', RoleController::class);
+    Route::get('permissions', [PermissionController::class, 'index'])->name('permissions.index');
 });
 
 require __DIR__.'/auth.php';
