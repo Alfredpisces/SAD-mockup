@@ -32,10 +32,18 @@
                 <li class="slide__category"><span class="category-name">Main</span></li>
 
                 <!-- Dashboard -->
-                <li class="slide">
-                    <a href="{{ url('/dashboard') }}" class="side-menu__item">
+                <li class="slide {{ request()->is('dashboard') ? 'active' : '' }}">
+                    <a href="{{ url('/dashboard') }}" class="side-menu__item {{ request()->is('dashboard') ? 'active' : '' }}">
                         <i class="bx bx-home side-menu__icon"></i>
                         <span class="side-menu__label">Dashboard</span>
+                    </a>
+                </li>
+
+                <!-- Transactions -->
+                <li class="slide {{ request()->is('transactions*') ? 'active' : '' }}">
+                    <a href="{{ route('transactions.index') }}" class="side-menu__item {{ request()->is('transactions*') ? 'active' : '' }}">
+                        <i class="bx bx-transfer side-menu__icon"></i>
+                        <span class="side-menu__label">Transactions</span>
                     </a>
                 </li>
 
@@ -43,25 +51,19 @@
                 <li class="slide__category"><span class="category-name">Management</span></li>
 
                 <!-- Users -->
-                <li class="slide has-sub">
-                    <a href="javascript:void(0);" class="side-menu__item">
+                <li class="slide has-sub {{ request()->is('users*') ? 'open active' : '' }}">
+                    <a href="javascript:void(0);" class="side-menu__item {{ request()->is('users*') ? 'active' : '' }}">
                         <i class="bx bx-user side-menu__icon"></i>
                         <span class="side-menu__label">Users</span>
                         <i class="fe fe-chevron-right side-menu__angle"></i>
                     </a>
                     <ul class="slide-menu child1">
                         <li class="slide side-menu__label1"><a href="javascript:void(0);">Users</a></li>
-                        <li class="slide">
-                            <a href="{{ url('/users') }}" class="side-menu__item">All Users</a>
+                        <li class="slide {{ request()->is('users') ? 'active' : '' }}">
+                            <a href="{{ route('users.index') }}" class="side-menu__item {{ request()->is('users') ? 'active' : '' }}">All Users</a>
                         </li>
-                        <li class="slide">
-                            <a href="{{ url('/users/create') }}" class="side-menu__item">Add User</a>
-                        </li>
-                        <li class="slide">
-                            <a href="{{ url('/roles') }}" class="side-menu__item">Roles</a>
-                        </li>
-                        <li class="slide">
-                            <a href="{{ url('/permissions') }}" class="side-menu__item">Permissions</a>
+                        <li class="slide {{ request()->is('users/create') ? 'active' : '' }}">
+                            <a href="{{ route('users.create') }}" class="side-menu__item {{ request()->is('users/create') ? 'active' : '' }}">Add User</a>
                         </li>
                     </ul>
                 </li>
