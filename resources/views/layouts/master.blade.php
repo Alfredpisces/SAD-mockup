@@ -1,60 +1,82 @@
-<aside class="app-sidebar" id="sidebar">
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-    <!-- Sidebar Header / Logo -->
-    <div class="main-sidebar-header">
-        <a href="{{ url('/dashboard') }}" class="header-logo">
-            <img src="{{ asset('backend/assets/images/brand-logos/desktop-logo.png') }}" alt="logo"
-                class="desktop-logo">
-            <img src="{{ asset('backend/assets/images/brand-logos/toggle-logo.png') }}" alt="logo"
-                class="toggle-logo">
-            <img src="{{ asset('backend/assets/images/brand-logos/desktop-dark.png') }}" alt="logo"
-                class="desktop-dark">
-            <img src="{{ asset('backend/assets/images/brand-logos/toggle-dark.png') }}" alt="logo"
-                class="toggle-dark">
-            <img src="{{ asset('backend/assets/images/brand-logos/desktop-white.png') }}" alt="logo"
-                class="desktop-white">
-        </a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>@yield('title')</title>
+
+    <link rel="icon" href="{{ asset('backend/assets/images/brand-logos/favicon.ico') }}" type="image/x-icon">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ asset('backend/assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/libs/simplebar/simplebar.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/libs/@simonwep/pickr/themes/nano.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('backend/assets/libs/jsvectormap/css/jsvectormap.min.css') }}">
+
+    <!-- Main JS (in head) -->
+    <script src="{{ asset('backend/assets/js/main.js') }}"></script>
+
+    @stack('styles')
+</head>
+
+<body>
+    <!-- Loader -->
+    <div id="loader">
+        <img src="{{ asset('backend/assets/images/brand-logos/desktop-logo.png') }}" alt="loader">
     </div>
 
-    <!-- Sidebar Body -->
-    <div class="main-sidebar" id="sidebar-scroll">
-        <nav class="main-menu-container nav nav-pills flex-column sub-open">
-            <div class="slide-left" id="slide-left">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24"
-                    viewBox="0 0 24 24">
-                    <path d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"></path>
-                </svg>
+    <div class="page">
+        <!-- Header -->
+        <header class="app-header">
+            @include('partials.navbar')
+        </header>
+
+        <!-- Sidebar -->
+        @include('partials.sidebar')
+
+        <!-- Content -->
+        <div class="content">
+            <div class="main-content">
+                @yield('content')
             </div>
+        </div>
 
-            <ul class="main-menu">
-
-                <li class="slide__category"><span class="category-name">Main</span></li>
-
-                <!-- Dashboard -->
-                <li class="slide">
-                    <a href="{{ url('/dashboard') }}" class="side-menu__item">
-                        <i class="bx bx-home side-menu__icon"></i>
-                        <span class="side-menu__label">Dashboard</span>
-                    </a>
-                </li>
-
-                <!-- Users -->
-                <li class="slide">
-                    <a href="{{ url('/users') }}" class="side-menu__item">
-                        <i class="bx bx-user side-menu__icon"></i>
-                        <span class="side-menu__label">Users</span>
-                    </a>
-                </li>
-
-            </ul>
-
-            <div class="slide-right" id="slide-right">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24" height="24"
-                    viewBox="0 0 24 24">
-                    <path d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"></path>
-                </svg>
+        <!-- Footer -->
+        <footer class="footer mt-auto">
+            <div class="container text-center py-3">
+                <span class="text-muted">&copy; {{ date('Y') }} SIMS. All rights reserved.</span>
             </div>
-        </nav>
+        </footer>
     </div>
 
-</aside>
+    <!-- Back to Top -->
+    <div class="scrollToTop">
+        <span class="arrow"><i class="ri-arrow-up-s-fill fs-20"></i></span>
+    </div>
+
+    <!-- Responsive Overlay -->
+    <div id="responsive-overlay"></div>
+
+    <!-- JS -->
+    <script src="{{ asset('backend/assets/libs/@popperjs/core/umd/popper.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/libs/@simonwep/pickr/pickr.es5.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/defaultmenu.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/switch.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/sticky.js') }}"></script>
+    <script src="{{ asset('backend/assets/libs/simplebar/simplebar.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/libs/preline/preline.js') }}"></script>
+    <script src="{{ asset('backend/assets/libs/apexcharts/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/libs/jsvectormap/js/jsvectormap.min.js') }}"></script>
+    <script src="{{ asset('backend/assets/libs/jsvectormap/maps/world-merc.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/us-merc-en.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/index.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/custom-switcher.js') }}"></script>
+    <script src="{{ asset('backend/assets/js/custom.js') }}"></script>
+
+    @stack('scripts')
+</body>
+
+</html>
