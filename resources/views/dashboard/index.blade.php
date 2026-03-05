@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-    <!-- Page Header -->
     <div class="md:flex block items-center justify-between my-6 page-header-breadcrumb">
         <div>
             <h4 class="mb-0 text-defaulttextcolor font-medium">Hi, welcome back!</h4>
@@ -34,7 +33,6 @@
         </div>
     </div>
 
-    <!-- Row 1: Stats Cards -->
     <div class="grid grid-cols-12 gap-x-6">
         <div class="xl:col-span-3 lg:col-span-6 md:col-span-6 sm:col-span-12 col-span-12">
             <div class="box overflow-hidden sales-box bg-primary-gradient !rounded-sm">
@@ -126,7 +124,6 @@
         </div>
     </div>
 
-    <!-- Row 2: Order Status + US Map -->
     <div class="grid grid-cols-12 gap-x-6">
         <div class="md:col-span-12 lg:col-span-12 xl:col-span-7 col-span-12">
             <div class="box">
@@ -182,9 +179,7 @@
         </div>
     </div>
 
-    <!-- Row 3: Recent Customers + Sales Activity + Recent Orders -->
     <div class="grid grid-cols-12 gap-x-6">
-        <!-- Recent Customers -->
         <div class="xl:col-span-4 md:col-span-12 lg:col-span-12 col-span-12">
             <div class="box overflow-hidden">
                 <div class="box-header !border-b-0 !pb-1">
@@ -289,7 +284,6 @@
             </div>
         </div>
 
-        <!-- Sales Activity -->
         <div class="xl:col-span-4 md:col-span-12 lg:col-span-6 col-span-12">
             <div class="box">
                 <div class="box-header !border-b-0 !pb-0">
@@ -340,7 +334,6 @@
             </div>
         </div>
 
-        <!-- Recent Orders + Progress -->
         <div class="xl:col-span-4 md:col-span-12 lg:col-span-6 col-span-12">
             <div class="box">
                 <div class="box-header !border-b-0 !pb-0">
@@ -397,9 +390,7 @@
         </div>
     </div>
 
-    <!-- Row 4: Top Countries + Recent Earnings Table -->
     <div class="grid grid-cols-12 gap-x-6">
-        <!-- Top Countries -->
         <div class="md:col-span-12 lg:col-span-4 xl:col-span-4 col-span-12">
             <div class="box top-countries-card">
                 <div class="box-header !border-b-0 !p-0">
@@ -430,7 +421,6 @@
             </div>
         </div>
 
-        <!-- Recent Earnings Table -->
         <div class="md:col-span-12 lg:col-span-8 xl:col-span-8 col-span-12">
             <div class="box !p-[20px]">
                 <div class="box-header !border-b-0 !p-0 flex justify-between">
@@ -499,4 +489,9 @@
             </div>
         </div>
     </div>
+
+    {{-- This pushes the index.js file into your master layout right at the bottom! --}}
+    @push('scripts')
+        <script src="{{ asset('backend/assets/js/index.js') }}"></script>
+    @endpush
 @endsection

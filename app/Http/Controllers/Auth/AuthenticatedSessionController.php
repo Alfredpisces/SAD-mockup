@@ -28,6 +28,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
+        // Redirects to the dashboard route upon successful login
         return redirect()->intended(route('dashboard', absolute: false));
     }
 
@@ -42,6 +43,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
+        // Redirects back to the login page upon logout
         return redirect('/login');
     }
 }

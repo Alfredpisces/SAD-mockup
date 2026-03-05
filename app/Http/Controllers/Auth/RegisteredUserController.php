@@ -45,6 +45,7 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('transactions.index', absolute: false));
+        // Redirects to the dashboard route upon successful registration
+        return redirect(route('dashboard', absolute: false));
     }
 }
